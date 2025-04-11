@@ -50,7 +50,7 @@ const SceneObject = ({
     if (meshRef.current && fiestaMode) {
       angle += 0.01; // adjust the speed of rotation by modifying the increment
       const radius = 0.5; // radius of the circle
-      const speed = 5; // adjust the speed of movement
+      const speed = 10; // adjust the speed of movement
 
       meshRef.current.position.x =
         radius * Math.cos(angle * speed) * signs[0] + object.position[0];

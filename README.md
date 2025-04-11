@@ -25,6 +25,10 @@ This project is a small 3D modelling application built with React Three Fiber th
   - Displays the project name and a list of objects in the scene.
   - Edit the name and position of objects in the scene
 
+## Performance
+
+Most of the components in the application are pretty optimized by default, but further measures were implemented for the components rendered inside a list, that are memoized using React.memo. Benchmarks are available in the browser console using `console.count`
+
 ## Installation
 
 ```bash
