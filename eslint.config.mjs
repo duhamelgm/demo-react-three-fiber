@@ -11,6 +11,7 @@ export default tseslint.config(
       "**/*.mjs",
       "eslint.config.mjs",
       "webpack.config.js",
+      "jest.config.js",
     ],
   },
   eslint.configs.recommended,

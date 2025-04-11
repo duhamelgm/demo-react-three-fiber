@@ -1,5 +1,5 @@
 import { Box, Grid, Stack } from "@mui/material";
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
 import MeshesSidebar from "./MeshesSidebar";
 import ObjectAttributes from "./ObjectAttributes";
@@ -7,6 +7,7 @@ import Scene from "./Scene";
 import useScene from "./Scene/useScene";
 import SceneTree from "./SceneTree";
 import Topbar from "./Topbar";
+import useFiesta from "./useFiesta";
 
 const Main = () => {
   const {
@@ -17,7 +18,7 @@ const Main = () => {
     onSetSelectedObjectId,
     selectedObjectId,
   } = useScene();
-  const [fiestaMode, setFiestaMode] = useState(false);
+  const { fiestaMode, setFiestaMode } = useFiesta();
 
   const objectsList = useMemo(() => Object.values(objects), [objects]);
 

@@ -32,6 +32,7 @@ describe("MeshesSidebar", () => {
     fireEvent.click(addCubeButton);
 
     expect(mockOnSetObjects).toHaveBeenCalledTimes(1);
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     const newObjects = mockOnSetObjects.mock.calls[0][0] as SceneObject;
     const newObjectId = Object.keys(newObjects).find((id) => !(id in objects));
 
