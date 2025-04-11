@@ -1,14 +1,6 @@
 import React from "react";
 
-import {
-  Box,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Typography,
-} from "@mui/material";
-import Icons from "../../shared/icons";
+import { Box, List, Typography } from "@mui/material";
 import { SceneObject, UseScene } from "../Scene/useScene";
 import SceneTreeItem from "./SceneTreeItem";
 

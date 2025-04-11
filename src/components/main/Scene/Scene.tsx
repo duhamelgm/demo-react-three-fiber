@@ -9,12 +9,14 @@ interface SceneProps {
   objects: SceneObjectType[];
   selectedObjectId: UseScene["selectedObjectId"];
   onSetSelectedObjectId: UseScene["onSetSelectedObjectId"];
+  fiestaMode: boolean;
 }
 
 const Scene = ({
   objects,
   selectedObjectId,
   onSetSelectedObjectId,
+  fiestaMode,
 }: SceneProps) => {
   console.count("Scene");
 
@@ -37,6 +39,7 @@ const Scene = ({
           object={object}
           onSetSelectedObjectId={onSetSelectedObjectId}
           selected={selectedObjectId === object.id}
+          fiestaMode={fiestaMode}
         />
       ))}
     </Canvas>

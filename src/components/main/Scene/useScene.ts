@@ -1,7 +1,7 @@
 import { SetStateAction, useState } from "react";
 import * as THREE from "three";
 
-const SNAPSHOT_STORAGE_LIMIT = 10;
+export const SNAPSHOT_STORAGE_LIMIT = 10;
 
 export type Shapes = "sphere" | "cube" | "cylinder";
 
@@ -28,6 +28,7 @@ export interface UseScene {
   onSetObjects(objects: SetStateAction<SceneObjects>, options?: { ignoreSnapshot?: boolean }): void,
   onUndo(): void,
   onRedo(): void,
+  snapshots: Snapshots,
 }
 
 const useScene = (): UseScene => {
@@ -47,7 +48,7 @@ const useScene = (): UseScene => {
       takeSnapshot();
     }
 
-    if (selectedObjectId && !(selectedObjectId in objects)) {
+    if (selectedObjectId && !(selectedObjectId in newObjects)) {
       setSelectedObjectId(null);
     }
 
@@ -86,7 +87,8 @@ const useScene = (): UseScene => {
     onSetSelectedObjectId: setSelectedObjectId,
     onSetObjects,
     onUndo,
-    onRedo
+    onRedo,
+    snapshots
   };
 };
 

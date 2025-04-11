@@ -5,20 +5,33 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import RedoOutlinedIcon from "@mui/icons-material/RedoOutlined";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import UndoOutlinedIcon from "@mui/icons-material/UndoOutlined";
-import { IconButton, Stack, TextField, Typography } from "@mui/material";
+import {
+  FormControlLabel,
+  IconButton,
+  Stack,
+  Switch,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { UseScene } from "../Scene/useScene";
 
 interface TopbarProps {
   onUndo: UseScene["onUndo"];
   onRedo: UseScene["onRedo"];
   onSetObjects: UseScene["onSetObjects"];
+  setFiestaMode: (value: boolean) => void;
 }
 
-const Topbar = ({ onUndo, onRedo, onSetObjects }: TopbarProps) => {
+const Topbar = ({
+  onUndo,
+  onRedo,
+  onSetObjects,
+  setFiestaMode,
+}: TopbarProps) => {
   console.count("Topbar");
 
   const [isEditingProjectName, setIsEditingProejctName] = useState(false);
-  const [projectName, setProjectName] = useState("MY PROJECT");
+  const [projectName, setProjectName] = useState("My Scene Project");
 
   return (
     <Stack borderBottom={1} direction="row" spacing={1}>
@@ -40,7 +53,17 @@ const Topbar = ({ onUndo, onRedo, onSetObjects }: TopbarProps) => {
           </>
         ) : (
           <>
-            <Typography variant="h2">{projectName}</Typography>
+            <Typography
+              variant="h2"
+              sx={{
+                maxWidth: 500,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                textWrap: "nowrap",
+              }}
+            >
+              {projectName}
+            </Typography>
             <IconButton
               color="primary"
               onClick={() => setIsEditingProejctName(true)}
@@ -61,6 +84,11 @@ const Topbar = ({ onUndo, onRedo, onSetObjects }: TopbarProps) => {
         <IconButton color="primary">
           <DeleteOutlineOutlinedIcon onClick={() => onSetObjects({})} />
         </IconButton>
+
+        <FormControlLabel
+          control={<Switch onChange={(e, checked) => setFiestaMode(checked)} />}
+          label="Fiesta"
+        />
       </Stack>
     </Stack>
   );

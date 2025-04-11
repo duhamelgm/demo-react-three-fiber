@@ -1,5 +1,5 @@
 import { Box, Grid, Stack } from "@mui/material";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 
 import MeshesSidebar from "./MeshesSidebar";
 import ObjectAttributes from "./ObjectAttributes";
@@ -17,12 +17,18 @@ const Main = () => {
     onSetSelectedObjectId,
     selectedObjectId,
   } = useScene();
+  const [fiestaMode, setFiestaMode] = useState(false);
 
   const objectsList = useMemo(() => Object.values(objects), [objects]);
 
   return (
     <Box display="flex" flexDirection="column" height="100vh">
-      <Topbar onUndo={onUndo} onRedo={onRedo} onSetObjects={onSetObjects} />
+      <Topbar
+        onUndo={onUndo}
+        onRedo={onRedo}
+        onSetObjects={onSetObjects}
+        setFiestaMode={setFiestaMode}
+      />
 
       <Grid container sx={{ flexGrow: 1 }}>
         <Grid size={2}>
@@ -36,6 +42,7 @@ const Main = () => {
           <Scene
             objects={objectsList}
             selectedObjectId={selectedObjectId}
+            fiestaMode={fiestaMode}
             onSetSelectedObjectId={onSetSelectedObjectId}
           />
         </Grid>
